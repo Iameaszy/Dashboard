@@ -44,8 +44,15 @@ module.exports = (app, config) => {
   app.use(passport.initialize());
   app.use(passport.session());
 
+  const passports = glob.sync(`${__dirname}/passport/*.js`);
+  passports.forEach((passport) => {
+    require(passport);
+  });
+
   app.get('*', (req, res) => {
-    res.sendFile('index.html', { root: path.join(__dirname, '../public/') });
+    res.sendFile('index.html', {
+      root: path.join(__dirname, '../public/'),
+    });
   });
   const controllers = glob.sync(`${config.root}/app/controllers/*.js`);
   controllers.forEach((controller) => {

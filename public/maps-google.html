@@ -137,6 +137,10 @@
                   <li class="breadcrumb-item active">Field map</li>
                 </ol>
               </div>
+              <form class="my-form" action="localhost:3000/map" enctype="application/json">
+                <input type="file" class="json-file" value="Import" accept="application/json">
+                <button type="button" class="json-btn">Upload</button>
+              </form>
               <h4 class="page-title">Maps</h4>
             </div>
           </div>
@@ -151,10 +155,7 @@
             </div>
           </div><!-- end col -->
           <div class="col-lg-12 col-xl-6 map-container">
-                <form action="localhost:3000/map" enctype="application/json">
-                    <input type="file" class="json-file" value="Import">
-                    <button type="button" class="json-btn">Import Json file</button>
-                </form>
+                <div id="markers-status" class="markers-status btn-group"></div>
           </div>
         </div>
       </div><!-- end col -->
@@ -180,10 +181,14 @@
       <script src="assets/js/jquery.blockUI.js"></script>
       <script src="assets/js/waves.js"></script>
       <script src="assets/js/jquery.nicescroll.js"></script>
-      <script src="assets/js/jquery.scrollTo.min.js"></script><!-- google maps api -->
-      <script src="http://maps.google.com/maps/api/js?key=AIzaSyCtSAR45TFgZjOs4nBFFZnII-6mMHLfSYI"></script><!-- Gmaps file -->
-      <script src="assets/plugins/gmaps/gmaps.min.js"></script><!-- demo codes -->
-      <script src="assets/pages/gmaps.js"></script><!-- App js -->
+      <script src="assets/js/jquery.scrollTo.min.js"></script>
+      <!-- google maps api -->
+      <script src="http://maps.google.com/maps/api/js?key=AIzaSyCtSAR45TFgZjOs4nBFFZnII-6mMHLfSYI"></script>
+      <!-- Gmaps file -->
+      <script src="assets/plugins/gmaps/gmaps.min.js"></script>
+      <!-- demo codes -->
+      <script src="assets/pages/gmaps.js"></script>
+      <!-- App js -->
       <script src="assets/js/app.js"></script>
   </body>
   <!-- Mirrored from themesdesign.in/dashor/layouts/horizontal/maps-google.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 Sep 2018 16:07:39 GMT -->

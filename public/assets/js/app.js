@@ -1,1 +1,109 @@
-var AplombApp=function(){"use strict";var e=$(window),n=$("body"),t=$(document),l=($(".body-content"),$("#wrapper"),$(".slimscroll-noti")),o=$("#status"),c=$("#preloader"),u=$("#mobileToggle"),i=$("#btn-fullscreen"),a=$(".navigation-menu>li"),r=$(".navigation-menu li.has-submenu a[href='#']"),s=$(".navigation-menu a"),d=function(e){o.fadeOut(),c.delay(350).fadeOut("slow"),n.delay(350).css({overflow:"visible"})},m=function(e){$('[data-toggle="tooltip"]').tooltip(),$('[data-toggle="popover"]').popover(),l.slimscroll({height:"230px",position:"right",size:"5px",color:"#98a6ad",wheelStep:10}),u.on("click",function(e){return $(this).toggleClass("open"),$("#navigation").slideToggle(400),!1}),a.slice(-1).addClass("last-elements"),r.on("click",function(e){$(window).width()<992&&(e.preventDefault(),$(this).parent("li").toggleClass("open").find(".submenu:first").toggleClass("open"))}),s.each(function(){var e=window.location.href.split(/[?#]/)[0];this.href==e&&($(this).parent().addClass("active"),$(this).parent().parent().parent().addClass("active"),$(this).parent().parent().parent().parent().parent().addClass("active"))}),i.on("click",function(e){return e.preventDefault(),document.fullscreenElement||document.mozFullScreenElement||document.webkitFullscreenElement?document.cancelFullScreen?document.cancelFullScreen():document.mozCancelFullScreen?document.mozCancelFullScreen():document.webkitCancelFullScreen&&document.webkitCancelFullScreen():document.documentElement.requestFullscreen?document.documentElement.requestFullscreen():document.documentElement.mozRequestFullScreen?document.documentElement.mozRequestFullScreen():document.documentElement.webkitRequestFullscreen&&document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT),!1})};return{init:function(){t.ready(m),e.on("load",d)}}}();!function(e){"use strict";AplombApp.init()}(window.jQuery);
+(function main($) {
+  $(document).ready(() => {
+    const $jsonFile = $('.json-file');
+    const fd = new FormData();
+    const $statusDiv = $('#markers-status');
+    let file;
+    $jsonFile.on('change', (e) => {
+      [file] = e.target.files;
+      fd.append('file', file, file.name);
+    });
+    $('.json-btn').click((err) => {
+      if (!file) {
+        return alert('Please select a file');
+      }
+
+      $.ajax({
+        url: 'http://localhost:3000/map',
+        data: fd,
+        contentType: false,
+        cache: false,
+        type: 'POST',
+        method: 'POST',
+        processData: false,
+        success: (result) => {
+          const locations = JSON.parse(result);
+          const path = [];
+          const map = new GMaps({
+            div: '#gmaps-markers',
+            lat: locations[3].latitude,
+            lng: locations[3].longitude,
+            zoom: 5,
+          });
+
+          const icons = [
+            'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
+            'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
+            'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+          ];
+
+          const colors = [
+            'red',
+            'yellow',
+            'green',
+          ];
+
+          locations.forEach((location) => {
+            const $elem = $(`<button class="status red">${location.state}</button>`);
+            path.push([location.latitude, location.longitude]);
+            let status = 0;
+            const mm = map.addMarker({
+              lat: location.latitude,
+              lng: location.longitude,
+              title: location.state,
+              icon: icons[status],
+              click: (e) => {
+                const stat = status;
+                if (status < 2) {
+                  status += 1;
+                } else {
+                  status = 0;
+                }
+                mm.setIcon(icons[status]);
+                $elem.removeClass(colors[stat]).addClass(colors[status]);
+                if (status === 1) {
+                  $elem.css({
+                    color: 'black',
+                  });
+                } else {
+                  $elem.css({
+                    color: 'white',
+                  });
+                }
+              },
+            });
+            $elem.on('click', (event) => {
+              const stat = status;
+              if (status < 2) {
+                status += 1;
+              } else {
+                status = 0;
+              }
+
+              mm.setIcon(icons[status]);
+              $elem.removeClass(colors[stat]).addClass(colors[status]);
+              if (status === 1) {
+                $elem.css({
+                  color: 'black',
+                });
+              } else {
+                $elem.css({
+                  color: 'white',
+                });
+              }
+            });
+            $statusDiv.hide().append($elem).show();
+          });
+
+          map.drawPolyline({
+            path,
+            strokeColor: '#ff0000',
+            strokeOpacity: 0.6,
+            strokeWeight: 6,
+          });
+        },
+        error: error => console.log(error),
+      });
+    });
+  });
+}(jQuery));

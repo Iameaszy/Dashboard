@@ -5,10 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "NODE_ENV=test mocha --recursive --timeout 10000 --exit",
-    "test:coverage": "nyc npm test",
-    "test:unit": "mocha --recursive test/middleware test/models test/routes",
-    "test:integration": "mocha --recursive test/integration"
+    "test": "NODE_ENV=test mocha --recursive --timeout 10000 --exit"
   },
   "dependencies": {
     "bcrypt": "^3.0.1",
@@ -25,6 +22,7 @@
     "glob": "^6.0.4",
     "jsonwebtoken": "^8.3.0",
     "method-override": "^2.3.0",
+    "mkdirp": "^0.5.1",
     "mongoose": "^4.1.2",
     "morgan": "^1.6.1",
     "multer": "^1.4.1",
