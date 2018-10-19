@@ -139,7 +139,6 @@ describe('/user/login', () => {
       .send({
         email: 'easyclick05@gmail.com',
         password: 'abcdefgh',
-        name: 'Yusuf Adeniyi',
       })
       .then(() => done())
       .catch((err) => {

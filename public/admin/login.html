@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui">
+    <title>Login | Page</title>
+    <meta content="Login Page" name="description">
+    <meta content="Yusuf" name="author">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="../assets/images/favicon.ico">
+    <link href="../assets/css/icons.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css">
+  </head>
+
+  <body>
+    <section class="login-form">
+      <div class="thumbnail-placeholder">
+        <img src="../assets/images/man.ico" alt="LOGO" width="140" height="140">
+      </div>
+      <form action="/user/register" method="POST" enctype="application/x-www-form-urlencoded">
+        <div class="loader">
+          <img src="assets/images/index.messenger-typing-preloader.svg" alt>
+        </div>
+        <div class="input-container">
+          <label for="name">Email</label>
+          <div>
+            <input type="email" placeholder="@" name="email" id="email" required>
+          </div>
+          <div class="error-log email-error">
+            <p class="error">Email is required</p>
+          </div>
+        </div>
+
+        <div class="input-container">
+          <label for="password">Password</label>
+          <div>
+            <input type="password" placeholder="Password" name="password" id="password" minlength="8" required>
+          </div>
+          <div class="error-log password-error">
+            <p class="error">Password is required</p>
+          </div>
+        </div>
+        <div class="input-checkbox-container">
+          <label for="remember">
+            <input type="checkbox" name="remember" id="remember" aria-checked="false">
+            <span>Remember me?</span>
+          </label>
+        </div>
+        <div class="submit-btn-container">
+          <button type="submit" class="btn">
+            Login
+          </button>
+        </div>
+      </form>
+    </section>
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/pages/login.js"></script>
+  </body>
+
+</html>
