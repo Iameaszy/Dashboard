@@ -3944,12 +3944,16 @@ body {
 #topnav .topbar-main .logo .logo-large {
   position: absolute;
   top: 22px;
-  height: 14px
+  height: 14px;
+  color: white;
+  font-weight: bold;
 }
 
 #topnav .topbar-main .logo-small {
   display: none;
-  height: 40px
+  height: 40px;
+  color: white;
+  font-weight: bold;
 }
 
 #topnav .topbar-main .badge-topbar {
@@ -4862,14 +4866,14 @@ body {
 
 /*Login Styles*/
 .valid:not(form) {
-  border-left: 8px solid #42A948;
-  border-bottom: none;
+  border-left: 8px solid #42A948 !important;
+  border-bottom: none !important;
   /* green */
 }
 
 .invalid:not(form) {
-  border-left: 8px solid #a94442;
-  border-bottom: none;
+  border-left: 8px solid #a94442 !important;
+  border-bottom: none !important;
   /* red */
 }
 
@@ -4884,6 +4888,21 @@ body {
   box-shadow: 0 0 1px 3px #8fb90f;
   position: relative;
   border-radius: 1rem;
+}
+
+.login-server-error {
+  background: #00591B;
+  text-align: center;
+  padding: 1px;
+  width: 50%;
+  margin: auto;
+  font-size: 15pt;
+  margin-top: -5rem;
+  transition: all 1s;
+}
+
+.login-server-error .error {
+  color: #f78f8f !important;
 }
 
 .login-form .thumbnail-placeholder {
@@ -4963,6 +4982,7 @@ body {
 .login-form .input-container .error {
   margin: 0;
   color: white;
+  max-width: 15rem;
 }
 
 .login-form .input-container input::placeholder {
@@ -4971,6 +4991,21 @@ body {
 }
 
 /* Register Form*/
+.register-server-error {
+  background: #00591B;
+  text-align: center;
+  padding: 1px;
+  width: 50%;
+  margin: auto;
+  font-size: 15pt;
+  margin-top: -5rem;
+  transition: all 1s;
+}
+
+.register-server-error .error {
+  color: #f78f8f !important;
+}
+
 .register-form {
   display: flex;
   width: 30rem;
@@ -4978,20 +5013,24 @@ body {
   justify-content: center;
   padding: 0.5rem;
   padding-top: 7rem;
-  background: linear-gradient(to bottom right, #105610 70%, blue 30%);
-  box-shadow: 0 0 1px 3px blue;
+  background: linear-gradient(to bottom right, #105610 70%, #8fb90f 30%);
+  box-shadow: 0 0 1px 3px #8fb90f;
   position: relative;
   border-radius: 1rem;
 }
 
 .register-form .thumbnail-placeholder {
-  height: 200px;
-  width: 200px;
+  height: 180px;
+  width: 180px;
   position: absolute;
-  top: -7rem;
+  top: -6rem;
   border-radius: 100%;
-  border: blue 3px solid;
+  border: #C700E7 3px solid;
   background: white;
+  padding: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .register-form .loader {
@@ -5015,7 +5054,7 @@ body {
   border: none;
   padding: 1rem 3rem;
   border-radius: 3rem;
-  background: mediumseagreen;
+  background: #fc3aff;
   color: white;
   outline: none;
   font-size: 14pt;
@@ -5026,23 +5065,37 @@ body {
   background: #d337d6;
 }
 
-.resgister-form .submit-btn-container .btn:disabled {
+.register-form .submit-btn-container .btn:disabled {
   background: #e377e4a6;
   cursor: not-allowed;
 }
 
 .register-form .input-container {
   padding-bottom: 1.5rem;
-}
-
-.register-form .input-container:nth-child(2) {
-  padding-bottom: 1rem;
+  color: white;
+  font-size: 14pt;
+  color: white;
 }
 
 .register-form .input-container input {
   padding: 0.7rem 1rem;
-  width: 14rem;
   border-radius: 5px;
+  border: none;
+  width: 15rem;
+}
+
+.register-form .input-container .error-log {
+  margin-bottom: 0;
+  background: #e05454;
+  color: white;
+  padding: 3px;
+  font-weight: bold;
+  display: none;
+}
+
+.register-form .input-container .error {
+  margin: 0;
+  color: white;
 }
 
 .register-form .input-container input::placeholder {

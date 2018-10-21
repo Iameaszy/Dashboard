@@ -48,12 +48,13 @@ module.exports = (app, config) => {
   passports.forEach((passport) => {
     require(passport);
   });
-
-  app.get('*', (req, res) => {
-    res.sendFile('index.html', {
-      root: path.join(__dirname, '../public/'),
+  /*
+    app.get('*', (req, res) => {
+      res.sendFile('login.html', {
+        root: path.join(__dirname, '../public/admin/'),
+      });
     });
-  });
+    */
   const controllers = glob.sync(`${config.root}/app/controllers/*.js`);
   controllers.forEach((controller) => {
     require(controller)(app);
