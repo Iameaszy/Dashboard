@@ -4879,7 +4879,7 @@ body {
 
 .login-form {
   display: flex;
-  width: 30rem;
+  width: 33rem;
   margin: 10rem auto;
   justify-content: center;
   padding: 0.5rem;
@@ -5008,7 +5008,7 @@ body {
 
 .register-form {
   display: flex;
-  width: 30rem;
+  width: 33rem;
   margin: 10rem auto;
   justify-content: center;
   padding: 0.5rem;
