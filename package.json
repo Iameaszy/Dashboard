@@ -8,7 +8,10 @@
     "test": "NODE_ENV=test mocha --recursive --timeout 10000 --exit"
   },
   "dependencies": {
+<<<<<<< HEAD
     "bcrypt": "^3.0.1",
+=======
+>>>>>>> master
     "bcryptjs": "^2.4.3",
     "bluebird": "^3.5.2",
     "body-parser": "^1.13.3",

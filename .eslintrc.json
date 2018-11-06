@@ -1,6 +1,7 @@
 {
   "extends": "airbnb-base",
   "rules": {
-    "prefer-promise-reject-errors": "off"
+    "prefer-promise-reject-errors": "off",
+    "func-names": "off"
   }
 }
