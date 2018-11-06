@@ -98,7 +98,8 @@
                       href="#"><span class="badge badge-success float-right">5</span><i class="mdi mdi-settings m-r-5"></i>
                       Settings</a> <a class="dropdown-item" href="#"><i class="mdi mdi-lock-open-outline m-r-5"></i>
                       Lock screen</a>
-                    <div class="dropdown-divider"></div><a class="dropdown-item text-danger" href="#"><i class="mdi mdi-power text-danger"></i>
+                    <div class="dropdown-divider"></div><a class="logout-btn dropdown-item text-danger" href="#"><i
+                        class="mdi mdi-power text-danger"></i>
                       Logout</a>
                   </div>
                 </div>
@@ -183,7 +184,14 @@
       <script src="assets/pages/gmaps.js"></script>
       <!-- App js -->
       <script src="assets/js/app.js"></script>
+      <script>
+        $('.logout-btn').click((e) => {
+          e.preventDefault();
+          localStorage.clear();
+          window.location.href = '/admin/login.html';
+        })
+
+      </script>
   </body>
-  <!-- Mirrored from themesdesign.in/dashor/layouts/horizontal/maps-google.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 Sep 2018 16:07:39 GMT -->
 
 </html>

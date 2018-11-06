@@ -5,8 +5,8 @@
 }
 
 body {
-  background-repeat: repeat;
-  background: #f5f5f5;
+  background: green url(../images/military2.jpeg) no-repeat center;
+  background-size: cover;
   font-family: Nunito, sans-serif;
   color: #5b626b;
   font-size: 14px
