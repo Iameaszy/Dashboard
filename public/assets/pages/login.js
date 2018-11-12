@@ -101,9 +101,7 @@
 
   $btn.click((e) => {
     e.preventDefault();
-    $serverErrorContainer.css({
-      marginTop: '-5rem',
-    });
+    $serverErrorContainer.fadeOut();
     $loader.css({
       display: 'flex',
     });
@@ -164,9 +162,7 @@
         } else {
           $serverError.text(err.responseJSON.message);
         }
-        $serverErrorContainer.css({
-          marginTop: 0,
-        });
+        $serverErrorContainer.fadeIn();
         scrollPos = $serverErrorContainer.offset().top;
         $(window).scrollTop(scrollPos);
       },

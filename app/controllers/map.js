@@ -5,7 +5,6 @@ const path = require('path');
 const MapModel = mongoose.model('Maps');
 const multer = require('multer');
 const fs = require('fs');
-const winston = require('../../config/winston');
 
 const storage = multer.memoryStorage();
 

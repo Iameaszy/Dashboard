@@ -103,6 +103,7 @@
     const $btn = $('.map-json-btn');
     const fd = new FormData();
     const $statusDiv = $('#markers-status');
+    const $homeLoader = $('.home-loader');
     let file;
 
     $jsonFile.on('change', (e) => {
@@ -113,6 +114,8 @@
       if (!fd.has('file')) {
         return alert('please select a file to upload');
       }
+
+      $homeLoader.show();
       $.ajax({
         url: 'http://localhost:3000/map',
         data: fd,
@@ -122,6 +125,7 @@
         method: 'POST',
         processData: false,
         success: (result) => {
+          $homeLoader.hide();
           const locations = JSON.parse(result);
           const path = [];
 
@@ -143,7 +147,7 @@
             const {
               lng,
             } = loc;
-            const $elem = $(`<button class="status red">${loc.city}</button>`);
+            const $elem = $(`<label><input type="checkbox" class="red">${loc.city}</label>`);
             path.push({
               lat,
               lng,
@@ -245,7 +249,10 @@
             $statusDiv.hide().append($elem).show();
           });
         },
-        error: error => console.log(error),
+        error: (error) => {
+          $homeLoader.hide();
+          window.alert('An unexpected error has occured. Please check your internet connection or your json format and reload and try again');
+        },
       });
     });
   });

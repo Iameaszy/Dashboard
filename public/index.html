@@ -139,6 +139,7 @@
                   <li class="breadcrumb-item active">Field map</li>
                 </ol>
               </div>
+
               <form class="map-form" action="localhost:3000/map" enctype="application/json">
                 <input type="file" class="map-json-file" value="Import" accept="application/json">
                 <button type="button" class="map-json-btn">Upload</button>
@@ -148,15 +149,18 @@
           </div>
         </div><!-- end page title end breadcrumb -->
         <div class="row">
-          <div class="col-lg-12 col-xl-6">
+          <div class="col-lg-12 col-xl-12">
             <div class="card m-b-30">
+              <div class="home-loader">
+                <img src="../assets/images/index.messenger-typing-preloader.svg" alt>
+              </div>
               <div class="card-body">
                 <h4 class="mt-0 header-title">Locations</h4>
                 <div id="gmaps-markers" class="gmaps"></div>
               </div>
             </div>
           </div><!-- end col -->
-          <div class="col-lg-12 col-xl-6 map-container">
+          <div class="col-lg-12 col-xl-12 map-container">
             <div id="markers-status" class="markers-status btn-group"></div>
           </div>
         </div>
